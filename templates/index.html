@@ -1,0 +1,80 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Car Price Predictor</h1>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form action="{{ url_for('predict') }}" method="post">
+            
+            <div class="form-group">
+                <label for="Present_Price">Present price (handred dollars):</label>
+                <input type="number" step="0.01" id="Present_Price" name="Present_Price" required>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="Driven_kms">Driven_kms (in km) :</label>
+                <input type="number" id="Driven_kms" name="Driven_kms" required>
+            </div>
+
+           
+            <div class="form-group">
+                <label for="Car_Age">Age of the Car (in years) :</label>
+                <input type="number" id="Car_Age" name="Car_Age" required>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="Fuel_Type">Fuel Type:</label>
+                <select id="Fuel_Type" name="Fuel_Type" required>
+                    <option value="">--Select--</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="CNG">CNG</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Selling_type">Selling Type :</label>
+                <select id="Selling_type" name="Selling_type" required>
+                    <option value="">--Select--</option>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Individual">Individual</option>
+                </select>
+            </div>
+
+           
+            <div class="form-group">
+                <label for="Transmission">Transmission :</label>
+                <select id="Transmission" name="Transmission" required>
+                    <option value="">--Select--</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="Owner">Owners:</label>
+                <select id="Owner" name="Owner" required>
+                    <option value="">--Select--</option>
+                    <option value="0">First Owner</option>
+                    <option value="1">Second Owner</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

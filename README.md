@@ -1,2 +1,4 @@
 car price prediction project 
-![task3](https://github.com/user-attachments/assets/e8f8f867-44fb-436c-b4e4-707058e6d482)
+
+![Figure_1](https://github.com/user-attachments/assets/b4ca8b3b-6424-4adc-a910-89c8d5cca4a4)
+

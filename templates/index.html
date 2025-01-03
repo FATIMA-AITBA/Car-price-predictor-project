@@ -38,9 +38,9 @@
                 <label for="Fuel_Type">Fuel Type:</label>
                 <select id="Fuel_Type" name="Fuel_Type" required>
                     <option value="">--Select--</option>
-                    <option value="Petrol">Petrol</option>
-                    <option value="Diesel">Diesel</option>
-                    <option value="CNG">CNG</option>
+                    <option value="0">Petrol</option>
+                    <option value="1">Diesel</option>
+                    <option value="2">CNG</option>
                 </select>
             </div>
 
@@ -48,8 +48,8 @@
                 <label for="Selling_type">Selling Type :</label>
                 <select id="Selling_type" name="Selling_type" required>
                     <option value="">--Select--</option>
-                    <option value="Dealer">Dealer</option>
-                    <option value="Individual">Individual</option>
+                    <option value="0">Dealer</option>
+                    <option value="1">Individual</option>
                 </select>
             </div>
 
@@ -58,19 +58,15 @@
                 <label for="Transmission">Transmission :</label>
                 <select id="Transmission" name="Transmission" required>
                     <option value="">--Select--</option>
-                    <option value="Manual">Manual</option>
-                    <option value="Automatic">Automatic</option>
+                    <option value="0">Manual</option>
+                    <option value="1">Automatic</option>
                 </select>
             </div>
 
             
             <div class="form-group">
-                <label for="Owner">Owners:</label>
-                <select id="Owner" name="Owner" required>
-                    <option value="">--Select--</option>
-                    <option value="0">First Owner</option>
-                    <option value="1">Second Owner</option>
-                </select>
+                <label for="Owner">Number of Previous Owners:</label>
+                <input type="number" step="1" name="Owner" required>
             </div>
 
             <button type="submit">Predict</button>

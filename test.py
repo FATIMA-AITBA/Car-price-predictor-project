@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 import joblib  
+import numpy as np
 
 df = pd.read_csv('car_data.csv')
 
@@ -12,13 +13,19 @@ print(df.head())
 print(df.info())
 print(df.describe())
 
-df['Car_Age'] = 2024 - df['Year']
+df['Car_Age'] = 2025 - df['Year']
 
 df = df.drop(['Car_Name', 'Year'], axis=1)
 
-df = pd.get_dummies(df, columns=['Fuel_Type', 'Selling_type', 'Transmission'], drop_first=True)
+# handel dummies
 
-df = pd.get_dummies(df, columns=['Owner'], drop_first=True)
+df['Transmission']=df['Transmission'].map({'Manual':0,'Automatic':1})
+
+df['Selling_type']=df['Selling_type'].map({'Dealer':0,'Individual':1})
+
+df['Fuel_Type']=df['Fuel_Type'].map({'Petrol':0,'Diesel':1,'CNG':2})
+
+# standardization 
 
 scaler = StandardScaler()
 numerical_features = ['Present_Price', 'Driven_kms', 'Car_Age']
@@ -40,6 +47,7 @@ r2_lr = r2_score(y_test, y_lr_pred)
 print(f'Linear Regression - Mean Squared Error: {mse_lr}')
 print(f'Linear Regression - R^2 Score: {r2_lr}')
 
+
 joblib.dump(lr_model, 'model/linear_regression_model.pkl')
 print("Model saved to 'model/linear_regression_model.pkl'")
 
@@ -53,3 +61,4 @@ plt.ylabel('Predicted Prices')
 plt.title('Actual vs Predicted Car Prices')
 plt.legend()
 plt.show()
+
